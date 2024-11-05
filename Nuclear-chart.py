@@ -14,7 +14,7 @@ import numpy as np
 import matplotlib as mpl
 
 mpl.font_manager._rebuild()
-mpl.rc('font', family='serif', serif='Linguistics Pro') # Utopia LaTeX font with greek letters
+mpl.rc('font', family='serif', serif='Linguistics Pro')
 mpl.rc('text', usetex=False)
 mpl.rc('mathtext', fontset='custom', rm='Linguistics Pro', it='Linguistics Pro:italic', bf='Linguistics Pro:bold')
 
@@ -25,9 +25,7 @@ data['year'].fillna(2020, inplace=True)
 data['year'].astype(int)
 data['mode'].fillna('XXX', inplace=True)
 fig, (ax) = plt.subplots(1,1,figsize=(6,4))
-#ax.set_ylim(0,180)
-#ax.set_xlim(0,120)
-#ax.scatter(data[data['year'] < yr]["N"], data[data['year'] < yr]["Z"], c='red')
+
 
 scatter1=ax.scatter(data[(data['mode'].str.contains('B+',regex=False)) & (data['year'] < yr)]["N"], data[(data['mode'].str.contains('B+',regex=False)) & (data['year'] < yr)]["Z"], c='#F19997',s=0.55, marker='s')
 scatter2=ax.scatter(data[(data['mode'].str.contains('p',regex=False)) & (data['year'] < yr)]["N"], data[(data['mode'].str.contains('p',regex=False)) & (data['year'] < yr)]["Z"], c='#F5C14C',s=0.55, marker='s')
@@ -71,7 +69,6 @@ xticks=np.array([8, 20, 28,50,82,126])
 ax.xaxis.set_ticks(xticks, minor=False)
 yticks=np.array([8, 20, 28,50,82])
 ax.yaxis.set_ticks(yticks, minor=False)
-#ax2.set_ylim(0,180)
 #ax2.set_xlim(0,120)
 #data.to_csv('check.txt')
 plt.savefig("nuclear_chart_{}.pdf".format(yr),  bbox_inches='tight')
